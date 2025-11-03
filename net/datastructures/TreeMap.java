@@ -507,4 +507,17 @@ public class TreeMap<K,V> extends AbstractSortedMap<K,V> {
     }
   }
 
+  public int height(TreeMap<K, V> bTree){
+    return (heightCalc(bTree.root()));
+  }
+
+  private int heightCalc(Position<Entry<K,V>> p){
+    if (isExternal(p)){
+      return 0;
+    }
+    int left = heightCalc(left(p));
+    int right = heightCalc(right(p));
+    return Math.max(left, right) + 1;
+  }
+
 }

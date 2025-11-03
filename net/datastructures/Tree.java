@@ -56,7 +56,7 @@ public interface Tree<E> extends Iterable<E> {
    * @throws IllegalArgumentException if p is not a valid Position for this tree.
    */
   Iterable<Position<E>> children(Position<E> p)
-                                   throws IllegalArgumentException;
+                    throws IllegalArgumentException;
 
   /**
    * Returns the number of children of Position p.
