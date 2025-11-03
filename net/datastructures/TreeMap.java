@@ -511,12 +511,12 @@ public class TreeMap<K,V> extends AbstractSortedMap<K,V> {
     return (heightCalc(bTree.root()));
   }
 
-  private int heightCalc(Position<Entry<K,V>> p){
-    if (isExternal(p)){
+  private int heightCalc(Position<Entry<K,V>> node){
+    if (isExternal(node)){
       return 0;
     }
-    int left = heightCalc(left(p));
-    int right = heightCalc(right(p));
+    int left = heightCalc(left(node));
+    int right = heightCalc(right(node));
     return Math.max(left, right) + 1;
   }
 
