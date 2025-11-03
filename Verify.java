@@ -20,12 +20,12 @@
 // Revision 1.2 2015/10/31 Lachlan Plant
 // (Lachlan needs to add here the details on his update)
 // ==========================================================================
-import java.util.TreeMap;
+import net.datastructures.TreeMap;
 import net.datastructures.AVLTreeMap;
 import net.datastructures.BinaryTree;
 //import net.datastructures.EulerTour;
 
-public class Verify {
+public class Verify<V> {
   protected int d_totalHeightAVL;
   protected int d_totalHeightBST;
   protected int d_minAVL, d_maxAVL;
@@ -94,7 +94,7 @@ public class Verify {
 	// create random key between 0 and the maximum integer
 	int randKey=(int) (Math.random()*Integer.MAX_VALUE);
 	// make sure the generated random key is not used before 
-	if ( true ) { // Needs change !!!
+	if ( treeAVL.get(randKey) == null) { // Needs change !!!
 	  // insert into AVL
       treeAVL.put(randKey, null);
       // insert into BST
@@ -105,7 +105,7 @@ public class Verify {
 	}
       } while ( count < _noNodes );
       // updateCounters( height( treeAVL ), height( treeBST));
-      updateCounters(height( (BinaryTree) treeAVL), height( (BinaryTree) treeBST)); // Needs change !!!
+      updateCounters(height(treeAVL), height(treeBST)); // Needs change !!!
     }
     return;
   }
@@ -115,8 +115,8 @@ public class Verify {
    * Adapt the Euler tour to calculate height (see Lab 4)
    * Note: BST and AVL trees are binary trees
    */
-  public <T> int height( BinaryTree<T> bTree ) {
-    return 0;
+  public <T> int height( TreeMap<Integer,Integer> bTree ) {
+    return bTree.height(bTree);
   }
 
   /**
