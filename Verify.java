@@ -20,11 +20,9 @@
 // Revision 1.2 2015/10/31 Lachlan Plant
 // (Lachlan needs to add here the details on his update)
 // ==========================================================================
+import java.util.TreeMap;
 import net.datastructures.AVLTreeMap;
-import net.datastructures.TreeMap;
 import net.datastructures.BinaryTree;
-import net.datastructures.Position;
-import net.datastructures.Entry;
 //import net.datastructures.EulerTour;
 
 public class Verify {
@@ -86,8 +84,9 @@ public class Verify {
     initCounters( _noNodes, _nTrees );
     // generate _nTrees and update statistics
     for(int i=0; i<_nTrees; ++i) { 
-      // Create AVL and BST trees using AVLTreeMap and TreeMap respectively.
 
+      AVLTreeMap<Integer, Integer> treeAVL = new AVLTreeMap<Integer, Integer>();
+      TreeMap<Integer, Integer> treeBST = new TreeMap<Integer, Integer>();
 
       // loop to insert _noNodes keys into tree
       int count = 0;
@@ -97,15 +96,16 @@ public class Verify {
 	// make sure the generated random key is not used before 
 	if ( true ) { // Needs change !!!
 	  // insert into AVL
-
-	  // insert into BST
+      treeAVL.put(randKey, null);
+      // insert into BST
+      treeBST.put(randKey, null);
 
 	  // next key
 	  ++count;
 	}
       } while ( count < _noNodes );
       // updateCounters( height( treeAVL ), height( treeBST));
-      updateCounters( 0, 0); // Needs change !!!
+      updateCounters(height( (BinaryTree) treeAVL), height( (BinaryTree) treeBST)); // Needs change !!!
     }
     return;
   }
@@ -116,7 +116,7 @@ public class Verify {
    * Note: BST and AVL trees are binary trees
    */
   public <T> int height( BinaryTree<T> bTree ) {
-    return 0; // change to return the height of bTree
+    return 0;
   }
 
   /**
